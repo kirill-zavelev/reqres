@@ -4,6 +4,7 @@ import by.teachmeskills.client.ResourceApiClient;
 import by.teachmeskills.dto.response.resource.Data;
 import by.teachmeskills.dto.response.resource.MultipleResources;
 import by.teachmeskills.dto.response.resource.SingleResource;
+import by.teachmeskills.dto.response.resource.Support;
 import com.github.javafaker.Faker;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
@@ -27,7 +28,8 @@ public class ResourcesTest {
 
     @Test
     public void checkGetSingleResource() {
-        by.teachmeskills.dto.response.resource.Support resourceSupport = new by.teachmeskills.dto.response.resource.Support("https://reqres.in/#support-heading", "To keep ReqRes free, contributions towards server costs are appreciated!");
+        Support resourceSupport = new Support("https://reqres.in/#support-heading",
+                "To keep ReqRes free, contributions towards server costs are appreciated!");
         SingleResource expSingleResource = new SingleResource(resourceData, resourceSupport);
         SingleResource actSingleResource = new ResourceApiClient().getResource(2, HttpStatus.SC_OK);
         Assertions.assertThat(actSingleResource).as("User's data is not equal").isEqualTo(expSingleResource);

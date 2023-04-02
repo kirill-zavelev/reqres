@@ -1,8 +1,6 @@
 package by.teachmeskills.client;
 
 import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -16,8 +14,8 @@ public class BaseApiClient {
     static final String BASE_URL = "https://reqres.in/";
 
     public BaseApiClient() {
-//        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+//        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
         RestAssured.baseURI = BASE_URL;
     }
 
